@@ -1,6 +1,9 @@
 /*----- constants -----*/
 const winningCombos = [];
-
+const lemon = 1;
+const diamond = 2;
+const cherry = 3;
+const 
 
 
 
