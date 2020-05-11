@@ -1,16 +1,20 @@
 /*----- constants -----*/
-const lemon = 1;
-const diamond = 2;
-const cherry = 3;
-const grape = 4;
-const shamrock = 5;
-const plum = 6;
-const seven = 7;
-const crown = 8;
-const spade = 9;
-const bar = 10;
-const star = 11;
-const bell = 12;
+//Set up image lookup
+
+const slotFigures = [
+    {1: "../imgs/lemon.jpg"},
+    {2: "../imgs/diamond.jpg"},
+    {3: "../imgs/cherry.jpg"},
+    {4: "../imgs/grape.jpg"},
+    {5: "../imgs/shamrock.jpg"},
+    {6: "../imgs/plum.jpg"},
+    {7: "../imgs/seven.jpg"},
+    {8: "../imgs/crown.jpg"},
+    {9: "../imgs/spade.jpg"},
+    {10: "../imgs/bar.jpg"},
+    {11: "../imgs/star.jpg"},
+    {12: "../imgs/bell.jpg"},
+]
 
 const winningCombos = [
     [1, 1, 1],
@@ -24,8 +28,10 @@ const winningCombos = [
     [9, 9, 9],
     [10, 10, 10],
     [11, 11, 11],
-    [12, 12, 12],``
+    [12, 12, 12],
 ];
+
+const userSpin = [];
 
 /*----- app's state (variables) -----*/
 
@@ -41,22 +47,34 @@ const slot2 = document.getElementById('slot2');
 const slot3 = document.getElementById('slot3');
 
 /*----- event listeners -----*/
-document.querySelector('button').addEventListener('click', spin);
-
+// document.querySelector('spin').addEventListener('click', spin);
+// document.querySelector('reset').addEventListener('click', reset);
 
 
 
 /*----- functions -----*/
 init();
 
-function spin() {
+function init () {
 
+}
+
+function spin() {
+    userSpin[0] = getRandomInt();
+    userSpin[1] = getRandomInt();
+    userSpin[2] = getRandomInt();
+    console.log(userSpin); 
+}
+
+function getRandomInt(){
+    let spinIdx = Math.floor(Math.random() * slotFigures.length);
+    return spinIdx;
 }
 
 function render() {
 
 }
 
-function init () {
+function reset () {
 
 }
