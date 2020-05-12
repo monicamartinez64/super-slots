@@ -1,15 +1,13 @@
 html, body {
     height: 100vh;
     margin: 0;
-    background-color: grey;
-}
-
-body {
+    background-color: gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 30px;
+    
 }
 
 h1 {
@@ -26,6 +24,7 @@ td {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    background-color: gray;
 }
 
 button {
@@ -39,9 +38,5 @@ button {
     height: 50px;
     border: 5px solid white;
     color: white;
-    background-color: grey;
-}
-
-#slots{
-    border: 4px solid white;
+    background-color: gray;
 }

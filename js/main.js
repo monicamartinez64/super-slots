@@ -8,7 +8,7 @@ const slotFigures = [
     {4: "../imgs/grape.jpg"},
     {5: "../imgs/shamrock.jpg"},
     {6: "../imgs/plum.jpg"},
-    {7: "../imgs/seven.jpg"},
+    {7: "../imgs/seven.jpg"},//done
     {8: "../imgs/crown.jpg"},
     {9: "../imgs/spade.jpg"},
     {10: "../imgs/bar.jpg"},
@@ -40,14 +40,17 @@ const userSpin = [];
 
 
 /*----- cached element references -----*/
-const slots = document.querySelectorAll('slots');
 const machine = document.getElementById('machine');
 const slot1 = document.getElementById('slot1');
 const slot2 = document.getElementById('slot2');
 const slot3 = document.getElementById('slot3');
+const spinBtn = document.getElementById('spin');
+const resetBtn = document.getElementById('reset');
 
 /*----- event listeners -----*/
 // document.querySelector('spin').addEventListener('click', spin);
+spinBtn.addEventListener('click', spin);
+resetBtn.addEventListener('click', reset);
 // document.querySelector('reset').addEventListener('click', reset);
 
 
@@ -59,22 +62,33 @@ function init () {
 
 }
 
+function render() {
+    slot1.innerText = userSpin[0];
+    slot2.innerText = userSpin[1];
+    slot3.innerText = userSpin[2];
+}
+
 function spin() {
     userSpin[0] = getRandomInt();
     userSpin[1] = getRandomInt();
     userSpin[2] = getRandomInt();
-    console.log(userSpin); 
+    //Determine Winner
+    if (userSpin = winningCombos[idx]) {
+
+    }
+    render();
 }
 
 function getRandomInt(){
+    let slots = Object.keys(slotFigures);
     let spinIdx = Math.floor(Math.random() * slotFigures.length);
-    return spinIdx;
+    return slots[spinIdx];
 }
 
-function render() {
-
-}
 
 function reset () {
-
+    userSpin[0] = 0
+    userSpin[1] = 0
+    userSpin[2] = 0
+    render();
 }
