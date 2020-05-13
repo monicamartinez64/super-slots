@@ -72,11 +72,12 @@ function getRandomInt(){
 }
 
 function checkWin(){
-    if (includes = winningCombos.some(a => userSpin.every((v, i) => v === a[i])) === true)
-}
-console.log(checkWin);
-
-// includes = winningCombos.some(a => userSpin.every((v, i) => v === a[i]));
+    if (includes = winningCombos.some(a => userSpin.every((v, i) => v === a[i])) === true) {
+        return "Jackpot!";
+    } else {
+        return "Spin Again";
+    }
+    }
 
 function reset() {
     slot1.innerText = '0';
