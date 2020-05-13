@@ -12,7 +12,7 @@ const slotFigures = [
     {10: "../imgs/bar.jpg"},
     {11: "../imgs/star.jpg"},
     {12: "../imgs/bell.jpg"},
-]
+    ]
 
 const winningCombos = [
     [1, 1, 1],
@@ -35,11 +35,13 @@ const userSpin = [];
 
 /*----- cached element references -----*/
 const machine = document.getElementById('machine');
-const slot1 = document.getElementById('slot1');
-const slot2 = document.getElementById('slot2');
-const slot3 = document.getElementById('slot3');
+const slot1 = document.querySelector('#slot1 img');
+const slot2 = document.querySelector('#slot2 img');
+const slot3 = document.querySelector('#slot3 img');
 const spinBtn = document.getElementById('spin');
 const resetBtn = document.getElementById('reset');
+const element = document.querySelector('.my-element');
+element.style.setProperty('--animate-duration', '0.5s');
 
 /*----- event listeners -----*/
 spinBtn.addEventListener('click', spin);
@@ -53,10 +55,16 @@ function init () {
 }
 
 function render() {
-    slot1.src = slotFigures[userSpin[0]];
-    slot2.src = slotFigures[userSpin[1]];
-    slot3.src = slotFigures[userSpin[2]];
+    console.log(userSpin);
+    slot1.src = Object.values(userSpin[0]);
+    slot2.src = Object.values(userSpin[1]);
+    slot3.src = Object.values(userSpin[2]);
+    // slot1.src = slotFigures[userSpin[0].value];
+    // slot2.src = slotFigures[userSpin[1].value];
+    // slot3.src = slotFigures[userSpin[2].value];
 }
+
+//Above function is rendering the entire object, however, only the value in that object is needed.
 
 function spin() {
     userSpin[0] = getRandomInt();
@@ -82,3 +90,33 @@ function checkWin(){
 function reset() {
     
 }
+
+
+
+// const backgroundImageEl = document.getElementById('image');
+// const oldImg = '../images/tree.png';
+// const newImg = '../images/guyontree.png';
+// flashBackground(oldImg, newImg);
+// function flashBackground(oldImg, newImg) {
+//     setTimeout(() => {
+//         backgroundImageEl.src = newImg
+//     }, 100)
+//     setTimeout(() => {
+//         backgroundImageEl.src = oldImg
+//     }, 200)
+//     setTimeout(() => {
+//         backgroundImageEl.src = newImg
+//     }, 300)
+//     setTimeout(() => {
+//         backgroundImageEl.src = oldImg
+//     }, 400)
+//     setTimeout(() => {
+//         backgroundImageEl.src = newImg
+//     }, 500)
+//     setTimeout(() => {
+//         backgroundImageEl.src = oldImg
+//     }, 600)
+//     setTimeout(() => {
+//         backgroundImageEl.src = newImg
+//     }, 700)
+// }
