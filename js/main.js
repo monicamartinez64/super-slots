@@ -53,9 +53,9 @@ function init () {
 }
 
 function render() {
-    slot1.innerText = userSpin[0];
-    slot2.innerText = userSpin[1];
-    slot3.innerText = userSpin[2];
+    slot1.src = slotFigures[userSpin[0]];
+    slot2.src = slotFigures[userSpin[1]];
+    slot3.src = slotFigures[userSpin[2]];
 }
 
 function spin() {
@@ -80,8 +80,5 @@ function checkWin(){
     }
 
 function reset() {
-    slot1.innerText = '0';
-    slot2.innerText = '0';
-    slot3.innerText = '0';
-    render();
+    
 }

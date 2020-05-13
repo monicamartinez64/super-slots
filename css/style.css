@@ -1,7 +1,7 @@
 html, body {
     height: 100vh;
     margin: 0;
-    background-color: gray;
+    background-color: #081631;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,19 +12,21 @@ html, body {
 
 h1 {
     color: white;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
 
 td {
     color: white;
     height: 200px;
-    width: 100px;
+    width: 200px;
     border: 5px solid white;
     text-align: center;
     justify-content: center;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background-color: gray;
+    background-color: #081631;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
 
 button {
@@ -38,5 +40,6 @@ button {
     height: 50px;
     border: 5px solid white;
     color: white;
-    background-color: gray;
+    background-color: #081631;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
 }
