@@ -1,18 +1,18 @@
 /*----- constants -----*/
-const slotFigures = [
-    {1: "../imgs/lemon.jpg"},
-    {2: "../imgs/diamond.jpg"},
-    {3: "../imgs/cherry.jpg"},
-    {4: "../imgs/grape.jpg"},
-    {5: "../imgs/shamrock.jpg"},
-    {6: "../imgs/plum.jpg"},
-    {7: "../imgs/seven.jpg"},
-    {8: "../imgs/crown.jpg"},
-    {9: "../imgs/spade.jpg"},
-    {10: "../imgs/bar.jpg"},
-    {11: "../imgs/star.jpg"},
-    {12: "../imgs/bell.jpg"},
-    ]
+const slotFigures = {
+    1: "../imgs/lemon.jpg",
+    2: "../imgs/diamond.jpg",
+    3: "../imgs/cherry.jpg",
+    4: "../imgs/grape.jpg",
+    5: "../imgs/shamrock.jpg",
+    6: "../imgs/plum.jpg",
+    7: "../imgs/seven.jpg",
+    8: "../imgs/crown.jpg",
+    9: "../imgs/spade.jpg",
+    10: "../imgs/bar.jpg",
+    11: "../imgs/star.jpg",
+    12: "../imgs/bell.jpg",
+}
 
 const winningCombos = [
     [1, 1, 1],
@@ -29,6 +29,20 @@ const winningCombos = [
     [12, 12, 12],
 ];
 
+possibleSpins = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+                4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+                6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+                7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+                8, 8, 8, 8, 8, 8, 8, 8,
+                9, 9, 9, 9, 9, 9, 9,
+                10, 10, 10, 10, 10,
+                11, 11, 11, 11,
+                12, 12, 12
+                ];
+
 const userSpin = [];
 
 /*----- app's state (variables) -----*/
@@ -40,8 +54,7 @@ const slot2 = document.querySelector('#slot2 img');
 const slot3 = document.querySelector('#slot3 img');
 const spinBtn = document.getElementById('spin');
 const resetBtn = document.getElementById('reset');
-const element = document.querySelector('.my-element');
-element.style.setProperty('--animate-duration', '0.5s');
+const userBet = document.getElementById('input');
 
 /*----- event listeners -----*/
 spinBtn.addEventListener('click', spin);
@@ -56,15 +69,10 @@ function init () {
 
 function render() {
     console.log(userSpin);
-    slot1.src = Object.values(userSpin[0]);
-    slot2.src = Object.values(userSpin[1]);
-    slot3.src = Object.values(userSpin[2]);
-    // slot1.src = slotFigures[userSpin[0].value];
-    // slot2.src = slotFigures[userSpin[1].value];
-    // slot3.src = slotFigures[userSpin[2].value];
+    slot1.src = slotFigures[userSpin[0]];
+    slot2.src = slotFigures[userSpin[1]];
+    slot3.src = slotFigures[userSpin[2]];
 }
-
-//Above function is rendering the entire object, however, only the value in that object is needed.
 
 function spin() {
     userSpin[0] = getRandomInt();
@@ -73,16 +81,35 @@ function spin() {
     render();
 }
 
-function getRandomInt(){
-    let slots = Object.keys(slotFigures); //Need in order for spin button to work
-    let spinIdx = Math.floor(Math.random() * slotFigures.length);
-    return slots[spinIdx];
+// function getRandomInt(){
+//     let slots = Object.keys(slotFigures);
+//     let spinIdx = Math.ceil(Math.random() * 12);
+//     return spinIdx;
+// }
+
+function getRandomInt() {
+    let number;
+    number = Math.ceil(Math.random() * possibleSpins.length)
+    return possibleSpins[number];
 }
+
+function addBets (){
+
+}
+//If else function
+//Add bets function
+//Multiply user input by user spin value
+//Return value into money won so far
+//One win function and one lose function
+//deduct sum of three numbers if there is a loss
+//make sure to add variable holding the initial value and changes as user plays
 
 function checkWin(){
     if (includes = winningCombos.some(a => userSpin.every((v, i) => v === a[i])) === true) {
+        //call win function & record winnings
         return "Jackpot!";
     } else {
+        //call lose function & record losses
         return "Spin Again";
     }
     }
