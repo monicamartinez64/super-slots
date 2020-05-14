@@ -60,7 +60,10 @@ possibleSpins = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 
 const userSpin = [];
 
+let betOutcome = 0;
+
 /*----- app's state (variables) -----*/
+ 
 
 /*----- cached element references -----*/
 const machine = document.getElementById('machine');
@@ -84,9 +87,9 @@ betsBtn.addEventListener('click', placeBets);
 init();
     
 function init () {
-    // slot1.style.display = "none";
-    // slot2.style.display = "none";
-    // slot3.style.display = "none";
+    slot1.style.display = "none";
+    slot2.style.display = "none";
+    slot3.style.display = "none";
 }
 
 function render() {
@@ -110,13 +113,13 @@ function getRandomInt() {
 }
 
 function winBet () {
-    parseInt(input.value) * parseInt(userSpin[0]);
-    return "Jackpot! You won $";
+    betOutcome = parseInt(input.value) * parseInt(userSpin[0]);
+    return `Jackpot! You won $${betOutcome}`;
 }
 
 function loseBet () {
-    parseInt(input.value) - parseInt(userSpin[0]);
-    return "Spin Again You lost $";
+    betOutcome = parseInt(input.value) - parseInt(userSpin[0]);
+    return `Spin Again You lost $${betOutcome}`;
 }
 
 //If else function
