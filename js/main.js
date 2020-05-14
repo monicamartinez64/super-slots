@@ -55,10 +55,12 @@ const slot3 = document.querySelector('#slot3 img');
 const spinBtn = document.getElementById('spin');
 const resetBtn = document.getElementById('reset');
 const userBet = document.getElementById('input');
+const betsBtn = document.getElementById('bets');
 
 /*----- event listeners -----*/
 spinBtn.addEventListener('click', spin);
 resetBtn.addEventListener('click', reset);
+betsBtn.addEventListener('click', placeBets);
 
 /*----- functions -----*/
 init();
@@ -93,7 +95,7 @@ function getRandomInt() {
     return possibleSpins[number];
 }
 
-function addBets (){
+function placeBets (){
 
 }
 //If else function
