@@ -30,16 +30,31 @@ const winningCombos = [
 ];
 
 possibleSpins = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
                 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 
+                3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
                 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
                 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
                 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
                 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+                6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+                7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
                 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
                 8, 8, 8, 8, 8, 8, 8, 8,
+                8, 8, 8, 8, 8, 8, 8, 8,
+                9, 9, 9, 9, 9, 9, 9,
                 9, 9, 9, 9, 9, 9, 9,
                 10, 10, 10, 10, 10,
+                10, 10, 10, 10, 10,
                 11, 11, 11, 11,
+                11, 11, 11, 11,
+                12, 12, 12,
                 12, 12, 12
                 ];
 
@@ -49,6 +64,7 @@ const userSpin = [];
 
 /*----- cached element references -----*/
 const machine = document.getElementById('machine');
+const slots = document.getElementById('slots');
 const slot1 = document.querySelector('#slot1 img');
 const slot2 = document.querySelector('#slot2 img');
 const slot3 = document.querySelector('#slot3 img');
@@ -56,6 +72,8 @@ const spinBtn = document.getElementById('spin');
 const resetBtn = document.getElementById('reset');
 const userBet = document.getElementById('input');
 const betsBtn = document.getElementById('bets');
+const displayEl = document.getElementById('display');
+const inputEl = document.getElementById('input');
 
 /*----- event listeners -----*/
 spinBtn.addEventListener('click', spin);
@@ -64,9 +82,11 @@ betsBtn.addEventListener('click', placeBets);
 
 /*----- functions -----*/
 init();
-
+    
 function init () {
-
+    // slot1.style.display = "none";
+    // slot2.style.display = "none";
+    // slot3.style.display = "none";
 }
 
 function render() {
@@ -83,21 +103,22 @@ function spin() {
     render();
 }
 
-// function getRandomInt(){
-//     let slots = Object.keys(slotFigures);
-//     let spinIdx = Math.ceil(Math.random() * 12);
-//     return spinIdx;
-// }
-
 function getRandomInt() {
     let number;
     number = Math.ceil(Math.random() * possibleSpins.length)
     return possibleSpins[number];
 }
 
-function placeBets (){
-
+function winBet () {
+    parseInt(input.value) * parseInt(userSpin[0]);
+    return "Jackpot! You won $";
 }
+
+function loseBet () {
+    parseInt(input.value) - parseInt(userSpin[0]);
+    return "Spin Again You lost $";
+}
+
 //If else function
 //Add bets function
 //Multiply user input by user spin value
@@ -106,15 +127,14 @@ function placeBets (){
 //deduct sum of three numbers if there is a loss
 //make sure to add variable holding the initial value and changes as user plays
 
-function checkWin(){
+function placeBets(){
     if (includes = winningCombos.some(a => userSpin.every((v, i) => v === a[i])) === true) {
-        //call win function & record winnings
-        return "Jackpot!";
+        winBet();
     } else {
-        //call lose function & record losses
-        return "Spin Again";
+        loseBet();
     }
     }
+
 
 function reset() {
     

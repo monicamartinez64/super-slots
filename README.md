@@ -1,1 +1,1 @@
-# super-slots
+# Super Slots!
