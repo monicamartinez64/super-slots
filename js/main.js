@@ -92,38 +92,46 @@ function init () {
 }
 
 function render() {
-    if (inputEl.value > 0){
     slot1.src = slotFigures[userSpin[0]];
     slot2.src = slotFigures[userSpin[1]];
     slot3.src = slotFigures[userSpin[2]];
     displayEl.innerText = betOutcome;
-    } else {
-        init();
-    }
 }
 
+// function render() {
+//     if (inputEl.value > 0){
+//     slot1.src = slotFigures[userSpin[0]];
+//     slot2.src = slotFigures[userSpin[1]];
+//     slot3.src = slotFigures[userSpin[2]];
+//     displayEl.innerText = betOutcome;
+//     } else {
+//         init();
+//     }
+// }
+
 function spin() {
-    userSpin[0] = getRandomInt();
+    if (inputEl.value > 0) {
+     userSpin[0] = getRandomInt();
     userSpin[1] = getRandomInt();
     userSpin[2] = getRandomInt();
     gameResult.innerText = placeBets();
-    render();
+    render();   
+    }
 }
 
 function getRandomInt() {
     let number;
-    number = Math.ceil(Math.random() * possibleSpins.length)
+    number = Math.ceil(Math.random() * possibleSpins.length - 1)
     return possibleSpins[number];
 }
 
 function winBet () {
-    betOutcome = parseInt(inputEl.value) * userSpin[0];
+    betOutcome = betOutcome + parseInt(inputEl.value) * userSpin[0];
     return `Jackpot! You won $${inputEl.value * userSpin[0]}`;
 }
 
 function loseBet () {
-    betOutcome = parseInt(inputEl.value) - userSpin[0];
-    return `Spin Again You lost $${userSpin[0]}`;
+    return `Spin Again`;
 }
 
 function placeBets(){
