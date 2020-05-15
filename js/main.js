@@ -58,12 +58,9 @@ possibleSpins = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                 12, 12, 12
                 ];
 
-const userSpin = [];
-
-let betOutcome = 0;
-
 /*----- app's state (variables) -----*/
- 
+const userSpin = [];
+let betOutcome = 0;
 
 /*----- cached element references -----*/
 const machine = document.getElementById('machine');
@@ -73,36 +70,39 @@ const slot2 = document.querySelector('#slot2 img');
 const slot3 = document.querySelector('#slot3 img');
 const spinBtn = document.getElementById('spin');
 const resetBtn = document.getElementById('reset');
-const userBet = document.getElementById('input');
-const betsBtn = document.getElementById('bets');
 const displayEl = document.getElementById('display');
 const inputEl = document.getElementById('input');
+const gameResult = document.getElementById('winloss');
 
 /*----- event listeners -----*/
 spinBtn.addEventListener('click', spin);
 resetBtn.addEventListener('click', reset);
-betsBtn.addEventListener('click', placeBets);
 
 /*----- functions -----*/
 init();
     
 function init () {
-    slot1.style.display = "none";
-    slot2.style.display = "none";
-    slot3.style.display = "none";
+    betOutcome = 0;
 }
 
 function render() {
-    console.log(userSpin);
+    if (inputEl.value > 0){
     slot1.src = slotFigures[userSpin[0]];
     slot2.src = slotFigures[userSpin[1]];
     slot3.src = slotFigures[userSpin[2]];
+    displayEl.innerText = betOutcome;
+    } else {
+        alert("Please place a bet to spin");
+    }
 }
 
 function spin() {
+    if (inputEl.value > 0){
     userSpin[0] = getRandomInt();
     userSpin[1] = getRandomInt();
     userSpin[2] = getRandomInt();
+    gameResult.innerText = placeBets();
+    }
     render();
 }
 
@@ -113,62 +113,35 @@ function getRandomInt() {
 }
 
 function winBet () {
-    betOutcome = parseInt(input.value) * parseInt(userSpin[0]);
+    if (inputEl.value > 0){
+    betOutcome *= parseInt(inputEl.value) * userSpin[0];
     return `Jackpot! You won $${betOutcome}`;
+    }
 }
 
 function loseBet () {
-    betOutcome = parseInt(input.value) - parseInt(userSpin[0]);
+    if (inputEl.value > 0){
+    betOutcome -= parseInt(inputEl.value) - userSpin[0];
     return `Spin Again You lost $${betOutcome}`;
+    }
 }
-
-//If else function
-//Add bets function
-//Multiply user input by user spin value
-//Return value into money won so far
-//One win function and one lose function
-//deduct sum of three numbers if there is a loss
-//make sure to add variable holding the initial value and changes as user plays
 
 function placeBets(){
     if (includes = winningCombos.some(a => userSpin.every((v, i) => v === a[i])) === true) {
-        winBet();
+        return winBet();
     } else {
-        loseBet();
+        return loseBet();
     }
+    render();
     }
-
 
 function reset() {
-    
+    init();
 }
 
+//Undefined value thrown in every now and then??
+//Place bets function resets every time the spin button is hit -- it does not continue to add or subtract
 
-
-// const backgroundImageEl = document.getElementById('image');
-// const oldImg = '../images/tree.png';
-// const newImg = '../images/guyontree.png';
-// flashBackground(oldImg, newImg);
-// function flashBackground(oldImg, newImg) {
-//     setTimeout(() => {
-//         backgroundImageEl.src = newImg
-//     }, 100)
-//     setTimeout(() => {
-//         backgroundImageEl.src = oldImg
-//     }, 200)
-//     setTimeout(() => {
-//         backgroundImageEl.src = newImg
-//     }, 300)
-//     setTimeout(() => {
-//         backgroundImageEl.src = oldImg
-//     }, 400)
-//     setTimeout(() => {
-//         backgroundImageEl.src = newImg
-//     }, 500)
-//     setTimeout(() => {
-//         backgroundImageEl.src = oldImg
-//     }, 600)
-//     setTimeout(() => {
-//         backgroundImageEl.src = newImg
-//     }, 700)
-// }
+//Toggle between reset and play again button
+//Make slots flash when user hits spin
+//Make slots flash and render random images based on a timer

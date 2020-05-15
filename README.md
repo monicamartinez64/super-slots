@@ -18,6 +18,6 @@
 
 
 ## Minimum Viable Product:
-1. User should be able to
+1. User should be able to play by hitting the spin button. Once the images are randomly rendered
 
 ## Stretch Goals:
