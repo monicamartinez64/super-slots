@@ -93,16 +93,17 @@ function render() {
     displayEl.innerText = betOutcome;
     } else {
         alert("Please place a bet to spin");
+
+
+
     }
 }
 
 function spin() {
-    if (inputEl.value > 0){
     userSpin[0] = getRandomInt();
     userSpin[1] = getRandomInt();
     userSpin[2] = getRandomInt();
     gameResult.innerText = placeBets();
-    }
     render();
 }
 
@@ -113,17 +114,13 @@ function getRandomInt() {
 }
 
 function winBet () {
-    if (inputEl.value > 0){
     betOutcome *= parseInt(inputEl.value) * userSpin[0];
-    return `Jackpot! You won $${betOutcome}`;
-    }
+    return `Jackpot! You won $${userSpin[0] * parseInt(inputEl.value)}`;
 }
 
 function loseBet () {
-    if (inputEl.value > 0){
-    betOutcome -= parseInt(inputEl.value) - userSpin[0];
-    return `Spin Again You lost $${betOutcome}`;
-    }
+    betOutcome -= parseInt(inputEl.value) - userSpin[0] - userSpin[1] - userSpin[2];
+    return `Spin Again You lost $${userSpin[0]+ userSpin[1] + userSpin[2]}`;
 }
 
 function placeBets(){
