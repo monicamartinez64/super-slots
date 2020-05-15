@@ -112,12 +112,12 @@ function getRandomInt() {
 
 function winBet () {
     betOutcome = parseInt(inputEl.value) * userSpin[0];
-    return `Jackpot! You won $${betOutcome}`;
+    return `Jackpot! You won $${inputEl.value * userSpin[0]}`;
 }
 
 function loseBet () {
     betOutcome = parseInt(inputEl.value) - userSpin[0];
-    return `Spin Again You lost $${betOutcome}`;
+    return `Spin Again You lost $${userSpin[0]}`;
 }
 
 function placeBets(){
