@@ -98,17 +98,6 @@ function render() {
     displayEl.innerText = betOutcome;
 }
 
-// function render() {
-//     if (inputEl.value > 0){
-//     slot1.src = slotFigures[userSpin[0]];
-//     slot2.src = slotFigures[userSpin[1]];
-//     slot3.src = slotFigures[userSpin[2]];
-//     displayEl.innerText = betOutcome;
-//     } else {
-//         init();
-//     }
-// }
-
 function spin() {
     if (inputEl.value > 0) {
      userSpin[0] = getRandomInt();
@@ -146,10 +135,3 @@ function placeBets(){
 function reset() {
     init();
 }
-
-//Undefined value thrown in every now and then??
-//Place bets function resets every time the spin button is hit -- it does not continue to add or subtract
-
-//Toggle between reset and play again button
-//Make slots flash when user hits spin
-//Make slots flash and render random images based on a timer
