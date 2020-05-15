@@ -88,6 +88,7 @@ function init () {
     slot2.src = "../imgs/lemon.jpg"
     slot3.src = "../imgs/lemon.jpg"
     gameResult.innerText = "Place your bet to spin:"
+    inputEl.value = 0;
 }
 
 function render() {
@@ -96,18 +97,17 @@ function render() {
     slot2.src = slotFigures[userSpin[1]];
     slot3.src = slotFigures[userSpin[2]];
     displayEl.innerText = betOutcome;
+    } else {
+        init();
     }
 }
 
-
 function spin() {
-    if (inputEl.value > 0){
     userSpin[0] = getRandomInt();
     userSpin[1] = getRandomInt();
     userSpin[2] = getRandomInt();
     gameResult.innerText = placeBets();
     render();
-}
 }
 
 function getRandomInt() {
