@@ -83,6 +83,11 @@ init();
     
 function init () {
     betOutcome = 0;
+    displayEl.innerText = "0";
+    slot1.src = "../imgs/lemon.jpg"
+    slot2.src = "../imgs/lemon.jpg"
+    slot3.src = "../imgs/lemon.jpg"
+    gameResult.innerText = "Place your bet to spin:"
 }
 
 function render() {
