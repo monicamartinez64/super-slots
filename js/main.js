@@ -93,9 +93,6 @@ function render() {
     displayEl.innerText = betOutcome;
     } else {
         alert("Please place a bet to spin");
-
-
-
     }
 }
 
@@ -114,13 +111,13 @@ function getRandomInt() {
 }
 
 function winBet () {
-    betOutcome *= parseInt(inputEl.value) * userSpin[0];
-    return `Jackpot! You won $${userSpin[0] * parseInt(inputEl.value)}`;
+    betOutcome = parseInt(inputEl.value) * userSpin[0];
+    return `Jackpot! You won $${betOutcome}`;
 }
 
 function loseBet () {
-    betOutcome -= parseInt(inputEl.value) - userSpin[0] - userSpin[1] - userSpin[2];
-    return `Spin Again You lost $${userSpin[0]+ userSpin[1] + userSpin[2]}`;
+    betOutcome = parseInt(inputEl.value) - userSpin[0];
+    return `Spin Again You lost $${betOutcome}`;
 }
 
 function placeBets(){
