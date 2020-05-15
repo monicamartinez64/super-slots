@@ -1,17 +1,17 @@
 /*----- constants -----*/
 const slotFigures = {
-    1: "../imgs/lemon.jpg",
-    2: "../imgs/diamond.jpg",
-    3: "../imgs/cherry.jpg",
-    4: "../imgs/grape.jpg",
-    5: "../imgs/shamrock.jpg",
-    6: "../imgs/plum.jpg",
-    7: "../imgs/seven.jpg",
-    8: "../imgs/crown.jpg",
-    9: "../imgs/spade.jpg",
-    10: "../imgs/bar.jpg",
-    11: "../imgs/star.jpg",
-    12: "../imgs/bell.jpg",
+    1: "https://i.imgur.com/hbwrmPy.jpg",
+    2: "https://i.imgur.com/OkQu6gc.jpg",
+    3: "https://i.imgur.com/pqSqvkV.jpg",
+    4: "https://i.imgur.com/cshOjli.jpg",
+    5: "https://i.imgur.com/08hkMh3.jpg",
+    6: "https://i.imgur.com/xVNCEld.jpg",
+    7: "https://i.imgur.com/DXYRIHS.jpg",
+    8: "https://i.imgur.com/vACkDaf.jpg",
+    9: "https://i.imgur.com/uqEXEfe.jpg",
+    10: "https://i.imgur.com/rC1CHBu.jpg",
+    11: "https://i.imgur.com/B8Ed9BN.jpg",
+    12: "https://i.imgur.com/suQ2N2U.jpg",
 }
 
 const winningCombos = [
@@ -84,9 +84,9 @@ init();
 function init () {
     betOutcome = 0;
     displayEl.innerText = "0";
-    slot1.src = "../imgs/lemon.jpg"
-    slot2.src = "../imgs/lemon.jpg"
-    slot3.src = "../imgs/lemon.jpg"
+    slot1.src = "https://i.imgur.com/hbwrmPy.jpg"
+    slot2.src = "https://i.imgur.com/hbwrmPy.jpg"
+    slot3.src = "https://i.imgur.com/hbwrmPy.jpg"
     gameResult.innerText = "Place your bet to spin:"
     inputEl.value = 0;
 }
